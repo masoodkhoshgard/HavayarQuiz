@@ -1,0 +1,13 @@
+﻿@using HavayarQuiz.Domain.Entities;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<HavayarUser> SignInManager
+@inject UserManager<HavayarUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole(Domain.Consts.Roles.Admin))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/HavayarUsers/Index">Users</a>
+    </li>
+}
+

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>HavayarQuiz.Infrastructure</RootNamespace>
+    <AssemblyName>HavayarQuiz.Infrastructure</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HavayarQuiz.Application\HavayarQuiz.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="HttpClients\" />
+    <Folder Include="Caching\" />
+  </ItemGroup>
+
+</Project>

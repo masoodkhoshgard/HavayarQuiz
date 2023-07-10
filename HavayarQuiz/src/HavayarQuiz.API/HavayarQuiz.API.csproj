@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>HavayarQuiz.API</RootNamespace>
+    <AssemblyName>HavayarQuiz.API</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="HavayarQuiz.API.ComponentTests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HavayarQuiz.Application\HavayarQuiz.Application.csproj" />
+    <ProjectReference Include="..\HavayarQuiz.Infrastructure\HavayarQuiz.Infrastructure.csproj" />
+    <ProjectReference Include="..\HavayarQuiz.Persistence.MsSql\HavayarQuiz.Persistence.MsSql.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\HavayarUsers\Contracts\" />
+  </ItemGroup>
+
+</Project>

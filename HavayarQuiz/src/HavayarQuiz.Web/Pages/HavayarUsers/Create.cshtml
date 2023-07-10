@@ -1,0 +1,119 @@
+﻿@page
+@model HavayarQuiz.Web.Pages.HavayarUsers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>HavayarUser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.FirstName" class="control-label"></label>
+                <input asp-for="HavayarUser.FirstName" class="form-control" />
+                <span asp-validation-for="HavayarUser.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.LastName" class="control-label"></label>
+                <input asp-for="HavayarUser.LastName" class="form-control" />
+                <span asp-validation-for="HavayarUser.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.BirthDate" class="control-label"></label>
+                <input asp-for="HavayarUser.BirthDate" class="form-control" />
+                <span asp-validation-for="HavayarUser.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.ProfilePicture" class="control-label"></label>
+                <input asp-for="HavayarUser.ProfilePicture" class="form-control" />
+                <span asp-validation-for="HavayarUser.ProfilePicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.UserName" class="control-label"></label>
+                <input asp-for="HavayarUser.UserName" class="form-control" />
+                <span asp-validation-for="HavayarUser.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.NormalizedUserName" class="control-label"></label>
+                <input asp-for="HavayarUser.NormalizedUserName" class="form-control" />
+                <span asp-validation-for="HavayarUser.NormalizedUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.Email" class="control-label"></label>
+                <input asp-for="HavayarUser.Email" class="form-control" />
+                <span asp-validation-for="HavayarUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.NormalizedEmail" class="control-label"></label>
+                <input asp-for="HavayarUser.NormalizedEmail" class="form-control" />
+                <span asp-validation-for="HavayarUser.NormalizedEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HavayarUser.EmailConfirmed" /> @Html.DisplayNameFor(model => model.HavayarUser.EmailConfirmed)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.PasswordHash" class="control-label"></label>
+                <input asp-for="HavayarUser.PasswordHash" class="form-control" />
+                <span asp-validation-for="HavayarUser.PasswordHash" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.SecurityStamp" class="control-label"></label>
+                <input asp-for="HavayarUser.SecurityStamp" class="form-control" />
+                <span asp-validation-for="HavayarUser.SecurityStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.ConcurrencyStamp" class="control-label"></label>
+                <input asp-for="HavayarUser.ConcurrencyStamp" class="form-control" />
+                <span asp-validation-for="HavayarUser.ConcurrencyStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.PhoneNumber" class="control-label"></label>
+                <input asp-for="HavayarUser.PhoneNumber" class="form-control" />
+                <span asp-validation-for="HavayarUser.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HavayarUser.PhoneNumberConfirmed" /> @Html.DisplayNameFor(model => model.HavayarUser.PhoneNumberConfirmed)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HavayarUser.TwoFactorEnabled" /> @Html.DisplayNameFor(model => model.HavayarUser.TwoFactorEnabled)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.LockoutEnd" class="control-label"></label>
+                <input asp-for="HavayarUser.LockoutEnd" class="form-control" />
+                <span asp-validation-for="HavayarUser.LockoutEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HavayarUser.LockoutEnabled" /> @Html.DisplayNameFor(model => model.HavayarUser.LockoutEnabled)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="HavayarUser.AccessFailedCount" class="control-label"></label>
+                <input asp-for="HavayarUser.AccessFailedCount" class="form-control" />
+                <span asp-validation-for="HavayarUser.AccessFailedCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
