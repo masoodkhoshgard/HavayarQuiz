@@ -3,7 +3,7 @@
 namespace HavayarQuiz.Application.HavayarUsers;
 public interface IHavayarUserService
 {
-    Task<Guid> CreateHavayarUserAsync(HavayarUserCreateDto model, CancellationToken cancellation);
+    Task<string> CreateHavayarUserAsync(HavayarUserCreateDto model, CancellationToken cancellation);
     Task<HavayarUserReturnDto> GetHavayarUserAsync(Guid Id, CancellationToken cancellation);
     Task<IEnumerable<HavayarUserReturnDto>> GetHavayarUserAsync(CancellationToken cancellation);
     Task UpdateWeatherForecastAsync(HavayarUserUpdateDto model, CancellationToken cancellation);

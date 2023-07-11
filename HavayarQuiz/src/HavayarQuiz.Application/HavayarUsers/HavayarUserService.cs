@@ -27,7 +27,7 @@ public class HavayarUserService : IHavayarUserService
         _emailStore = GetEmailStore();
     }
 
-    public async Task<Guid> CreateHavayarUserAsync(HavayarUserCreateDto model, CancellationToken cancellation)
+    public async Task<string> CreateHavayarUserAsync(HavayarUserCreateDto model, CancellationToken cancellation)
     {
         try
         {
@@ -40,13 +40,6 @@ public class HavayarUserService : IHavayarUserService
                 BirthDate = model.BirthDate,
                 ProfilePicture = model.ProfilePicture
             };
-            //var masood = await _userManager.FindByNameAsync("masoodkhoshgard");
-            //masood.PhoneNumber = "09125658957";
-            //masood = await _userManager.FindByNameAsync("masoodkhoshgard");
-            //masood.PhoneNumber = "09125658957";
-            //masood = await _userManager.FindByNameAsync("masoodkhoshgard");
-            //masood.PhoneNumber = "09125658957";
-            //var res = await _userStore.UpdateAsync(masood, cancellation);
             await _userStore.SetUserNameAsync(user, model.Username, CancellationToken.None);
             await _emailStore.SetEmailAsync(user, model.Email, CancellationToken.None);
 
@@ -59,7 +52,8 @@ public class HavayarUserService : IHavayarUserService
                     await _userManager.AddToRoleAsync(user, role.ToString());
                 }
 
-                return Guid.Parse(await _userManager.GetUserIdAsync(user));
+                //return Task.CompletedTask;
+                return await _userManager.GetUserIdAsync(user);
             }
             else
             {

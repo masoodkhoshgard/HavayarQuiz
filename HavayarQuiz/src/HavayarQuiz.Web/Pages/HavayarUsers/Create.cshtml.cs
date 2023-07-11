@@ -40,7 +40,7 @@ public class CreateModel : PageModel
         }
 
         var user = new HavayarUserCreateDto(Input.Email, Input.Username, Input.Password, Input.FirstName, Input.LastName, Input.BirthDate, Input.ProfilePicture, new List<Domain.Enums.Roles> { Input.Role });
-        var userId = _havayarUserService.CreateHavayarUserAsync(user, CancellationToken.None);
+        var userId = await _havayarUserService.CreateHavayarUserAsync(user, CancellationToken.None);
         //_context.HavayarUser.Add(HavayarUser);
         //await _context.SaveChangesAsync();
 
