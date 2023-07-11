@@ -5,13 +5,11 @@
 using HavayarQuiz.Domain.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using System.Text.Encodings.Web;
 
 namespace HavayarQuiz.Web.Areas.Identity.Pages.Account;
 
@@ -110,7 +108,6 @@ public class RegisterModel : PageModel
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Profile Picture")]
-        [Required]
 
         public byte[] ProfilePicture { get; set; }
     }
@@ -136,21 +133,19 @@ public class RegisterModel : PageModel
             user.BirthDate = Input.BirthDate;
             if (Request.Form.Files.Count > 0)
             {
-                IFormFile file = Request.Form.Files.FirstOrDefault();
-                using (var dataStream = new MemoryStream())
-                {
-                    await file.CopyToAsync(dataStream);
-                    user.ProfilePicture = dataStream.ToArray();
-                }
+                var file = Request.Form.Files.FirstOrDefault();
+                using var dataStream = new MemoryStream();
+                await file.CopyToAsync(dataStream);
+                user.ProfilePicture = dataStream.ToArray();
             }
 
-            await _userManager.AddToRoleAsync(user, Domain.Consts.Roles.BasicUser);
             var result = await _userManager.CreateAsync(user, Input.Password);
 
             if (result.Succeeded)
             {
                 _logger.LogInformation("User created a new account with password.");
 
+                await _userManager.AddToRoleAsync(user, Domain.Consts.Roles.BasicUser);
                 var userId = await _userManager.GetUserIdAsync(user);
 
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

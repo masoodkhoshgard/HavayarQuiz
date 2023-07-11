@@ -34,7 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		HavayarQuiz\README.md = HavayarQuiz\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HavayarQuiz.Web", "HavayarQuiz\src\HavayarQuiz.Web\HavayarQuiz.Web.csproj", "{903B47F0-FCF3-4259-932B-120805DBF0D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HavayarQuiz.Web", "HavayarQuiz\src\HavayarQuiz.Web\HavayarQuiz.Web.csproj", "{903B47F0-FCF3-4259-932B-120805DBF0D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

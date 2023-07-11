@@ -1,7 +1,6 @@
 ﻿using HavayarQuiz.Application.Extensions;
 using HavayarQuiz.Persistence.MsSql.Extensions;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
