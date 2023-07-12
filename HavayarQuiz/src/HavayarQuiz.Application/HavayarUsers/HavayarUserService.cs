@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HavayarQuiz.Application.HavayarUsers;
 
-[Authorize(Roles = Domain.Consts.Roles.Admin)]
+[Authorize]
 public class HavayarUserService : IHavayarUserService
 {
     private readonly IHavayarUserRepository _havayarUserRepository;
@@ -27,6 +27,7 @@ public class HavayarUserService : IHavayarUserService
         _emailStore = GetEmailStore();
     }
 
+    [Authorize]
     public async Task<string> CreateHavayarUserAsync(HavayarUserCreateDto model, CancellationToken cancellation)
     {
         try
@@ -66,6 +67,7 @@ public class HavayarUserService : IHavayarUserService
         }
     }
 
+    [Authorize]
     private IUserEmailStore<HavayarUser> GetEmailStore()
     {
         return !_userManager.SupportsUserEmail
@@ -74,6 +76,7 @@ public class HavayarUserService : IHavayarUserService
     }
 
     //[AllowAnonymous]
+    [Authorize]
     public async Task<HavayarUserReturnDto> GetHavayarUserAsync(Guid Id, CancellationToken cancellation)
     {
         var user = await _havayarUserRepository.GetAsync(Id, cancellation);
@@ -81,6 +84,7 @@ public class HavayarUserService : IHavayarUserService
 
     }
 
+    [Authorize]
     public async Task<IEnumerable<HavayarUserReturnDto>> GetHavayarUserAsync(CancellationToken cancellation)
     {
         var users = await _havayarUserRepository.GetAllAsync(cancellation);
@@ -88,7 +92,9 @@ public class HavayarUserService : IHavayarUserService
 
     }
 
+    [Authorize]
     public Task UpdateWeatherForecastAsync(HavayarUserUpdateDto model, CancellationToken cancellation) => throw new NotImplementedException();
 
+    [Authorize]
     public Task RemoveHavayarUserAsync(Guid userId, HavayarUserReturnDto model, CancellationToken cancellation) => throw new NotImplementedException();
 }

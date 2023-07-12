@@ -49,10 +49,11 @@
                 <label asp-for="Input.BirthDate"></label>
                 <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
-                <select class="form-select" asp-for="Input.Role" asp-items="Html.GetEnumSelectList<Domain.Enums.Roles>()"></select>
-                <label asp-for="Input.Role"></label>
-                <span asp-validation-for="Input.Role" class="text-danger"></span>
+
+            <div class="card mb-3">
+                <div class="card-header"><label asp-for="Input.Roles"></label></div>
+                    <checkboxlist asp-for="Input.Roles"></checkboxlist>
+                    <span asp-validation-for="Input.Roles" class="text-danger"></span>
             </div>
 
             <div class="form-floating mb-3">
@@ -87,4 +88,4 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-}
+            }

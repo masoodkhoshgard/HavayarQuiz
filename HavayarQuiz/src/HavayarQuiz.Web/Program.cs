@@ -1,5 +1,6 @@
 ﻿using HavayarQuiz.Application.Extensions;
 using HavayarQuiz.Persistence.MsSql.Extensions;
+using HavayarQuiz.Web.TagHelpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
