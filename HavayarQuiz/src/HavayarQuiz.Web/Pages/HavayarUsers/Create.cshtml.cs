@@ -41,7 +41,7 @@ public class CreateModel : PageModel
             Input.ProfilePicture = dataStream.ToArray();
         }
 
-        var user = new HavayarUserCreateDto(Input.Email, Input.Username, Input.Password, Input.FirstName, Input.LastName, Input.BirthDate, Input.ProfilePicture, new List<Domain.Enums.Roles>());
+        var user = new HavayarUserCreateDto(Input.Email, Input.Username, Input.Password, Input.FirstName, Input.LastName, Input.BirthDate, Input.ProfilePicture, Input.Roles);
         var userId = await _havayarUserService.CreateHavayarUserAsync(user, CancellationToken.None);
         //_context.HavayarUser.Add(HavayarUser);
         //await _context.SaveChangesAsync();

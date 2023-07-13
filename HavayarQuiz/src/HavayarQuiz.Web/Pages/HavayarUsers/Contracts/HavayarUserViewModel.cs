@@ -7,4 +7,5 @@ public record HavayarUserViewModel(Guid Id,
                                    [Display(Name = "First Name")] string FirstName,
                                    [Display(Name = "Last Name")] string LastName,
                                    [Display(Name = "Birth Date")] string BirthDate,
-                                   [Display(Name = "Profile Picture")] byte[] ProfilePicture);
+                                   [Display(Name = "Profile Picture")] byte[] ProfilePicture,
+                                   [Display(Name = "Roles")] string Roles);

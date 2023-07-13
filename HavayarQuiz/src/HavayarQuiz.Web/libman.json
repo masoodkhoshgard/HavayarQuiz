@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "bootstrap-icons@1.10.5",
+      "provider": "cdnjs",
+      "destination": "wwwroot/lib/bootstrap-icon/"
+    },
+    {
+      "library": "popper.js@2.11.8",
+      "provider": "cdnjs",
+      "destination": "wwwroot/lib/popperjs"
+
+    }
+  ]
+}

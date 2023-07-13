@@ -9,51 +9,57 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>HavayarUser</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HavayarUser.FirstName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HavayarUser.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HavayarUser.LastName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HavayarUser.LastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HavayarUser.BirthDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HavayarUser.BirthDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HavayarUser.ProfilePicture)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HavayarUser.ProfilePicture)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HavayarUser.UserName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HavayarUser.UserName)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HavayarUser.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HavayarUser.Email)
-        </dd>
-    </dl>
-
     <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HavayarUser.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HavayarUser.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HavayarUser.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.LastName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HavayarUser.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.BirthDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HavayarUser.BirthDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.Roles)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.HavayarUser.Roles)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.HavayarUser.ProfilePicture)
+            </dt>
+            <dd class="col-sm-10 h-25 w-25">
+                <img id="profilePicture" class="col-12 h-25 w-100" src="data:image/*;base64,@(Convert.ToBase64String(Model.HavayarUser.ProfilePicture))">
+            </dd>
+            <br />
+
+        </dl>
         <input type="hidden" asp-for="HavayarUser.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-page="./Index" class="btn btn-outline-secondary"><i class="bi bi-list-check"></i> Back to List</a>
     </form>
 </div>

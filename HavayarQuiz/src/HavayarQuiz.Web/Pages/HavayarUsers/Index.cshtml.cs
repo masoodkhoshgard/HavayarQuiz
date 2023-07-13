@@ -26,6 +26,7 @@ public class IndexModel : PageModel
                                                                model.FirstName,
                                                                model.LastName,
                                                                model.BirthDate.ToString("d"),
-                                                               model.ProfilePicture)).ToList());
+                                                               model.ProfilePicture,
+                                                               string.Join(", ", model.Roles))).ToList());
     }
 }

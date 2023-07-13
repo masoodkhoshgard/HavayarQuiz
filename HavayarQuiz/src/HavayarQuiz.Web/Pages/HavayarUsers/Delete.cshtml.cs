@@ -1,10 +1,12 @@
 ﻿using HavayarQuiz.Application.HavayarUsers;
 using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HavayarQuiz.Web.Pages.HavayarUsers;
 
+[Authorize(Roles = Domain.Consts.Roles.Admin)]
 public class DeleteModel : PageModel
 {
     private readonly IHavayarUserService _havayarUserService;
@@ -14,7 +16,7 @@ public class DeleteModel : PageModel
         _havayarUserService = havayarUserService;
     }
 
-    [BindProperty]
+    //[BindProperty]
     public HavayarUserViewModel HavayarUser { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(Guid? id)
@@ -32,7 +34,7 @@ public class DeleteModel : PageModel
         }
         else
         {
-            HavayarUser = new HavayarUserViewModel(havayaruser.Id, havayaruser.Email, havayaruser.Username, havayaruser.FirstName, havayaruser.LastName, havayaruser.BirthDate.ToString("d"), havayaruser.ProfilePicture);
+            HavayarUser = new HavayarUserViewModel(havayaruser.Id, havayaruser.Email, havayaruser.Username, havayaruser.FirstName, havayaruser.LastName, havayaruser.BirthDate.ToString("d"), havayaruser.ProfilePicture, string.Join(", ", havayaruser.Roles));
         }
 
         return Page();
@@ -40,19 +42,23 @@ public class DeleteModel : PageModel
 
     public async Task<IActionResult> OnPostAsync(Guid? id)
     {
-        //if (id == null || _context.HavayarUser == null)
-        //{
-        //    return NotFound();
-        //}
-        //var havayaruser = await _context.HavayarUser.FindAsync(id);
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
 
-        //if (havayaruser != null)
-        //{
-        //    HavayarUser = havayaruser;
-        //    _context.HavayarUser.Remove(HavayarUser);
-        //    await _context.SaveChangesAsync();
-        //}
-
-        return RedirectToPage("./Index");
+        try
+        {
+            await _havayarUserService.RemoveHavayarUserAsync(id, CancellationToken.None);
+            return RedirectToPage("./Index");
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
+            var havayaruser = await _havayarUserService.GetHavayarUserAsync(id ?? Guid.NewGuid(), CancellationToken.None);
+            HavayarUser = new HavayarUserViewModel(havayaruser.Id, havayaruser.Email, havayaruser.Username, havayaruser.FirstName, havayaruser.LastName, havayaruser.BirthDate.ToString("d"), havayaruser.ProfilePicture, string.Join(", ", havayaruser.Roles));
+            return Page();
+        }
     }
 }
+

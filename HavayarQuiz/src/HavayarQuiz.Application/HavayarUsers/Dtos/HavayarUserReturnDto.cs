@@ -5,4 +5,5 @@ public record HavayarUserReturnDto(Guid Id,
                                    string FirstName,
                                    string LastName,
                                    DateTime BirthDate,
-                                   byte[] ProfilePicture);
+                                   byte[] ProfilePicture,
+                                   IEnumerable<string> Roles);

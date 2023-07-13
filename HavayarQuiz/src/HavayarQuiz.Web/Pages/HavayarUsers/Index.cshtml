@@ -8,7 +8,8 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-primary" asp-page="Create" data-bs-placement="top" data-bs-toggle="tooltip"
+       data-bs-title="Create New User"><i class="bi bi-person-plus"></i> Create New</a>
 </p>
 @if (Model.HavayarUser.Count > 0)
 {
@@ -34,7 +35,10 @@
                 <th>
                     @Html.DisplayNameFor(model => model.HavayarUser[0].Email)
                 </th>
-                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HavayarUser[0].Roles)
+                </th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -50,8 +54,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.BirthDate)
                     </td>
-                    <td class="w-25">
-                        <img id="profilePicture" class="h-25 w-25" src="data:image/*;base64,@(Convert.ToBase64String(item.ProfilePicture))">
+                    <td class="w-auto">
+                        <img id="profilePicture" style="width:40px;height:40px; background-size:cover;"  src="data:image/*;base64,@(Convert.ToBase64String(item.ProfilePicture))">
                         @*@Html.DisplayFor(modelItem => item.ProfilePicture)*@
                     </td>
                     <td>
@@ -61,9 +65,22 @@
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+
+                        @Html.DisplayFor(modelItem => item.Roles)
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a asp-page="./Edit" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-title="Edit User" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+
+                            <a asp-page="./Details" class="btn btn-outline-dark" asp-route-id="@item.Id"
+                               data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-title="User Information"><i class="bi bi-card-checklist"></i></a>
+                            <a asp-page="./Delete" class="btn btn-outline-danger" asp-route-id="@item.Id"
+                               data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-title="Delete User"><i class="bi bi-trash3"></i></a>
+                        </div>
+
                     </td>
                 </tr>
             }

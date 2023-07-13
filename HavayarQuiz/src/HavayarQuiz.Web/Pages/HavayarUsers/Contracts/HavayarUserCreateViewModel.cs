@@ -6,11 +6,6 @@ namespace HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
 
 public class HavayarUserCreateViewModel
 {
-    public HavayarUserCreateViewModel()
-    {
-        Roles = new List<Roles>();
-    }
-
     [Required]
     [EmailAddress]
     [Display(Name = "Email")]
@@ -50,5 +45,5 @@ public class HavayarUserCreateViewModel
 
     [Required]
     [Display(Name = "User Role")]
-    public List<Domain.Enums.Roles> Roles { get; set; }
+    public List<Roles> Roles { get; set; }
 }

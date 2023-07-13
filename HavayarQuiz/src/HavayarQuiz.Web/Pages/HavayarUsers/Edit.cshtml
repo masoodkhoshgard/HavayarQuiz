@@ -4,117 +4,82 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>HavayarUser</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.FirstName" class="control-label"></label>
-                <input asp-for="HavayarUser.FirstName" class="form-control" />
-                <span asp-validation-for="HavayarUser.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.LastName" class="control-label"></label>
-                <input asp-for="HavayarUser.LastName" class="form-control" />
-                <span asp-validation-for="HavayarUser.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.BirthDate" class="control-label"></label>
-                <input asp-for="HavayarUser.BirthDate" class="form-control" />
-                <span asp-validation-for="HavayarUser.BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.ProfilePicture" class="control-label"></label>
-                <input asp-for="HavayarUser.ProfilePicture" class="form-control" />
-                <span asp-validation-for="HavayarUser.ProfilePicture" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="HavayarUser.Id" />
-            <div class="form-group">
-                <label asp-for="HavayarUser.UserName" class="control-label"></label>
-                <input asp-for="HavayarUser.UserName" class="form-control" />
-                <span asp-validation-for="HavayarUser.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.NormalizedUserName" class="control-label"></label>
-                <input asp-for="HavayarUser.NormalizedUserName" class="form-control" />
-                <span asp-validation-for="HavayarUser.NormalizedUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.Email" class="control-label"></label>
-                <input asp-for="HavayarUser.Email" class="form-control" />
-                <span asp-validation-for="HavayarUser.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.NormalizedEmail" class="control-label"></label>
-                <input asp-for="HavayarUser.NormalizedEmail" class="form-control" />
-                <span asp-validation-for="HavayarUser.NormalizedEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="HavayarUser.EmailConfirmed" /> @Html.DisplayNameFor(model => model.HavayarUser.EmailConfirmed)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.PasswordHash" class="control-label"></label>
-                <input asp-for="HavayarUser.PasswordHash" class="form-control" />
-                <span asp-validation-for="HavayarUser.PasswordHash" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.SecurityStamp" class="control-label"></label>
-                <input asp-for="HavayarUser.SecurityStamp" class="form-control" />
-                <span asp-validation-for="HavayarUser.SecurityStamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.ConcurrencyStamp" class="control-label"></label>
-                <input asp-for="HavayarUser.ConcurrencyStamp" class="form-control" />
-                <span asp-validation-for="HavayarUser.ConcurrencyStamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.PhoneNumber" class="control-label"></label>
-                <input asp-for="HavayarUser.PhoneNumber" class="form-control" />
-                <span asp-validation-for="HavayarUser.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="HavayarUser.PhoneNumberConfirmed" /> @Html.DisplayNameFor(model => model.HavayarUser.PhoneNumberConfirmed)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="HavayarUser.TwoFactorEnabled" /> @Html.DisplayNameFor(model => model.HavayarUser.TwoFactorEnabled)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.LockoutEnd" class="control-label"></label>
-                <input asp-for="HavayarUser.LockoutEnd" class="form-control" />
-                <span asp-validation-for="HavayarUser.LockoutEnd" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="HavayarUser.LockoutEnabled" /> @Html.DisplayNameFor(model => model.HavayarUser.LockoutEnabled)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="HavayarUser.AccessFailedCount" class="control-label"></label>
-                <input asp-for="HavayarUser.AccessFailedCount" class="form-control" />
-                <span asp-validation-for="HavayarUser.AccessFailedCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
+    <form id="registerForm" method="post" enctype="multipart/form-data">
+        <h2>Edit User.</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <input type="hidden" asp-for="Input.Id" />
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email"></label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" placeholder="username" />
+                    <label asp-for="Input.Username"></label>
+                    <span asp-validation-for="Input.Username" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.FirstName" class="form-control" autocomplete="name" aria-required="true" placeholder="John" />
+                    <label asp-for="Input.FirstName"></label>
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.LastName" class="form-control" autocomplete="family" aria-required="true" placeholder="Doe" />
+                    <label asp-for="Input.LastName"></label>
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.BirthDate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="2023/07/10" />
+                    <label asp-for="Input.BirthDate"></label>
+                    <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Input.Roles" class="mb-2 mx-3"></label><span class="badge bg-secondary">Multi Select with ctrl</span>
+                    <select class="form-select" asp-for="Input.Roles" asp-items="Html.GetEnumSelectList<Domain.Enums.Roles>()"></select>
+                    <span asp-validation-for="Input.Roles" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating mb-3 form-control">
+
+                    @if (Model.Input?.ProfilePicture != null)
+                    {
+                        <img id="profilePicture" style="background-position: center;background-size: 400px 400px;height: 400px;width: 50% !important;
+                                                        margin-left: auto;margin-right: auto;display: block;"
+                             class="col-12" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))">
+                    }
+                    else
+                    {
+                        <img id="profilePicture" style="background-position: center;background-size: 400px 400px;height: 400px;width: 50% !important;
+                                                        margin-left: auto;margin-right: auto;display: block;"
+                             class="col-12">
+                    }
+                    <input type="file"
+                           accept=".png,.jpg,.jpeg,.gif,.tif"
+                           asp-for="Input.ProfilePicture"
+                           class="form-control"
+                           style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                           onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                    <label asp-for="Input.ProfilePicture"></label>
+                    <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-page="./Index" class="btn btn-outline-secondary"><i class="bi bi-list-check"></i> Back to List</a>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
+            }
 }
