@@ -1,5 +1,4 @@
-﻿using HavayarQuiz.Application.HavayarUsers.Dtos;
-using HavayarQuiz.Domain.Exceptions;
+﻿using HavayarQuiz.Domain.Exceptions;
 using Microsoft.AspNetCore.Identity;
 
 namespace HavayarQuiz.Application.HavayarUsers;
@@ -110,6 +109,7 @@ public class HavayarUserService : IHavayarUserService
             {
                 throw new DomainException(string.Join(Environment.NewLine, result.Errors.Select(x => x.Description)));
             }
+
             await _unitOfWork.CompleteAsync(cancellation);
         }
         else

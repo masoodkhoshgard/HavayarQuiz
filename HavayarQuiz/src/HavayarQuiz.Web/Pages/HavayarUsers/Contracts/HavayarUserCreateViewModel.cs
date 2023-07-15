@@ -1,4 +1,5 @@
 ﻿using HavayarQuiz.Domain.Enums;
+using HavayarQuiz.Web.Helpers.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
@@ -41,7 +42,10 @@ public class HavayarUserCreateViewModel
     [DataType(DataType.Date)]
     public DateTime BirthDate { get; set; }
 
-    [Display(Name = "Profile Picture")] public byte[]? ProfilePicture { get; set; }
+    [Display(Name = "Profile Picture")]
+    [Required]
+    [ValidateImageFile(ErrorMessage = "Invalid file format. Only JPG, JPEG, PNG, and GIF files are allowed.")]
+    public IFormFile ProfilePicture { get; set; }
 
     [Required]
     [Display(Name = "User Role")]

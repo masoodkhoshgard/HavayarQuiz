@@ -2,5 +2,18 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+
+$(document).ready(function () {
+    $('.ProfilePicture').change(function () {
+        var previewId = this.dataset.previewId;
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#' + previewId).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(file);
+    });
+});

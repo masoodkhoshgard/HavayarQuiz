@@ -34,4 +34,9 @@
     <ProjectReference Include="..\..\src\HavayarQuiz.Domain\HavayarQuiz.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
 </Project>

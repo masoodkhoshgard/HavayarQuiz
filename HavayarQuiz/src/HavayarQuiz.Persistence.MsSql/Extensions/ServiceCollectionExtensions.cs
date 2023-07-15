@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -81,87 +82,93 @@ public static class ServiceCollectionExtensions
 
         services.ConfigureApplicationCookie(options =>
         {
-            options.AccessDeniedPath = "/Auth/Account/AccessDenied";
+            options.AccessDeniedPath = "/AccessDenied";
             options.Cookie.Name = "HavayarQuiz";
             options.Cookie.HttpOnly = true;
             options.ExpireTimeSpan = TimeSpan.FromHours(5);
-            options.LoginPath = "/Auth/Account/Login";
-            // ReturnUrlParameter requires 
-            //using Microsoft.AspNetCore.Authentication.Cookies;
+            options.LoginPath = "/Login";
             options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
             options.SlidingExpiration = true;
-            options.LogoutPath = "/Auth/Account/Logout";
-
+            options.LogoutPath = "/Logout";
         });
 
         //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         //       .AddCookie(options =>
         //       {
-        //           options.AccessDeniedPath = "/Auth/Account/AccessDenied";
+        //           options.AccessDeniedPath = "/Identity/Account/AccessDenied";
         //           options.Cookie.Name = CookieAuthenticationDefaults.AuthenticationScheme;
         //           options.Cookie.HttpOnly = true;
         //           options.ExpireTimeSpan = TimeSpan.FromSeconds(30);//.FromHours(5);
-        //           options.LoginPath = "/Auth/Account/Login";
+        //           options.LoginPath = "/Identity/Account/Login";
         //           // ReturnUrlParameter requires 
         //           //using Microsoft.AspNetCore.Authentication.Cookies;
         //           options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
         //           options.SlidingExpiration = true;
-        //           options.LogoutPath = "/Auth/Account/Logout";
+        //           options.LogoutPath = "/Identity/Account/Logout";
         //       }
         //   ).AddCookie(IdentityConstants.TwoFactorUserIdScheme, options =>
         //   {
-        //       options.AccessDeniedPath = "/Auth/Account/AccessDenied";
+        //       options.AccessDeniedPath = "/Identity/Account/AccessDenied";
         //       options.Cookie.Name = IdentityConstants.TwoFactorUserIdScheme;
         //       options.Cookie.HttpOnly = true;
         //       options.ExpireTimeSpan = TimeSpan.FromSeconds(30);//.FromHours(5);
-        //       options.LoginPath = "/Auth/Account/Login";
+        //       options.LoginPath = "/Identity/Account/Login";
         //       // ReturnUrlParameter requires 
         //       //using Microsoft.AspNetCore.Authentication.Cookies;
         //       options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
         //       options.SlidingExpiration = true;
-        //       options.LogoutPath = "/Auth/Account/Logout";
+        //       options.LogoutPath = "/Identity/Account/Logout";
         //   })
         //   .AddCookie(IdentityConstants.ExternalScheme, options =>
         //   {
-        //       options.AccessDeniedPath = "/Auth/Account/AccessDenied";
+        //       options.AccessDeniedPath = "/Identity/Account/AccessDenied";
         //       options.Cookie.Name = IdentityConstants.ExternalScheme;
         //       options.Cookie.HttpOnly = true;
         //       options.ExpireTimeSpan = TimeSpan.FromSeconds(30);//.FromHours(5);
-        //       options.LoginPath = "/Auth/Account/Login";
+        //       options.LoginPath = "/Identity/Account/Login";
         //       // ReturnUrlParameter requires 
         //       //using Microsoft.AspNetCore.Authentication.Cookies;
         //       options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
         //       options.SlidingExpiration = true;
-        //       options.LogoutPath = "/Auth/Account/Logout";
+        //       options.LogoutPath = "/Identity/Account/Logout";
         //   })
         //   .AddCookie(IdentityConstants.ApplicationScheme, options =>
         //   {
-        //       options.AccessDeniedPath = "/Auth/Account/AccessDenied";
+        //       options.AccessDeniedPath = "/Identity/Account/AccessDenied";
         //       options.Cookie.Name = IdentityConstants.ApplicationScheme;
         //       options.Cookie.HttpOnly = true;
         //       options.ExpireTimeSpan = TimeSpan.FromSeconds(30);//.FromHours(5);
-        //       options.LoginPath = "/Auth/Account/Login";
+        //       options.LoginPath = "/Identity/Account/Login";
         //       // ReturnUrlParameter requires 
         //       //using Microsoft.AspNetCore.Authentication.Cookies;
         //       options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
         //       options.SlidingExpiration = true;
-        //       options.LogoutPath = "/Auth/Account/Logout";
+        //       options.LogoutPath = "/Identity/Account/Logout";
         //   });
 
         //services.ConfigureApplicationCookie(options =>
         //{
-        //    options.AccessDeniedPath = "/Auth/Account/AccessDenied";
+        //    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
         //    options.Cookie.Name = "ServerDocumentation";
         //    options.Cookie.HttpOnly = true;
         //    options.ExpireTimeSpan = TimeSpan.FromHours(5);
-        //    options.LoginPath = "/Auth/Account/Login";
+        //    options.LoginPath = "/Identity/Account/Login";
         //    // ReturnUrlParameter requires 
         //    //using Microsoft.AspNetCore.Authentication.Cookies;
         //    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
         //    options.SlidingExpiration = true;
-        //    options.LogoutPath = "/Auth/Account/Logout";
+        //    options.LogoutPath = "/Identity/Account/Logout";
 
         //});
+        #endregion
+
+        #region snippet_route
+
+        services.AddRazorPages(options =>
+        {
+            options.Conventions.Add(new HavayarPageRouteModelConvention());
+        });
+
         #endregion
 
         #endregion Identity
@@ -175,7 +182,6 @@ public static class ServiceCollectionExtensions
         //;
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IWeatherForecastsRepository, WeatherForecastsRepository>();
         services.AddScoped<IHavayarUserRepository, HavayarUserRepository>();
     }
 
@@ -189,5 +195,29 @@ public static class ServiceCollectionExtensions
 
         await ContextSeed.SeedRolesAsync(roleManager);
         await ContextSeed.SeedSuperAdminAsync(userManager);
+    }
+}
+
+public class HavayarPageRouteModelConvention : IPageRouteModelConvention
+{
+    public void Apply(PageRouteModel model)
+    {
+        // Specify your custom logic here to modify the route for Identity pages
+        foreach (var selector in model.Selectors)
+        {
+            if (selector.AttributeRouteModel.Template.StartsWith("Identity/Account/"))
+            {
+                // Add route values as needed
+                selector.AttributeRouteModel.Template = selector.AttributeRouteModel.Template.Replace("Identity/Account", "");
+                selector.AttributeRouteModel.Name = "HavayarRoute";
+            }
+
+            if (selector.AttributeRouteModel.Template.StartsWith("HavayarUsers"))
+            {
+                // Add route values as needed
+                selector.AttributeRouteModel.Template = selector.AttributeRouteModel.Template.Replace("HavayarUsers", "Users");
+                selector.AttributeRouteModel.Name = "HavayarUserRoute";
+            }
+        }
     }
 }

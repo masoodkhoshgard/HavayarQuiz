@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{74FDFAB4-556
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{06614301-0F6A-427F-8387-716F69E25E8C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HavayarQuiz.API", "HavayarQuiz\src\HavayarQuiz.API\HavayarQuiz.API.csproj", "{78F11470-51F9-4377-B28B-A62DA999F18F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HavayarQuiz.Domain", "HavayarQuiz\src\HavayarQuiz.Domain\HavayarQuiz.Domain.csproj", "{ABE86517-2C4A-4149-B964-84186E3C8E0D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HavayarQuiz.Persistence.MsSql", "HavayarQuiz\src\HavayarQuiz.Persistence.MsSql\HavayarQuiz.Persistence.MsSql.csproj", "{F04E1FFD-B258-4FA0-8B23-523FE7D537DA}"
@@ -42,10 +40,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{78F11470-51F9-4377-B28B-A62DA999F18F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78F11470-51F9-4377-B28B-A62DA999F18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78F11470-51F9-4377-B28B-A62DA999F18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78F11470-51F9-4377-B28B-A62DA999F18F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABE86517-2C4A-4149-B964-84186E3C8E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABE86517-2C4A-4149-B964-84186E3C8E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE86517-2C4A-4149-B964-84186E3C8E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,7 +81,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{78F11470-51F9-4377-B28B-A62DA999F18F} = {74FDFAB4-556D-461C-8469-B4A965058A30}
 		{ABE86517-2C4A-4149-B964-84186E3C8E0D} = {74FDFAB4-556D-461C-8469-B4A965058A30}
 		{F04E1FFD-B258-4FA0-8B23-523FE7D537DA} = {74FDFAB4-556D-461C-8469-B4A965058A30}
 		{33425899-0481-4247-8300-1AFBF546D6A7} = {74FDFAB4-556D-461C-8469-B4A965058A30}

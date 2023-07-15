@@ -1,9 +1,11 @@
 ﻿using HavayarQuiz.Application.HavayarUsers;
 using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HavayarQuiz.Web.Pages.HavayarUsers;
 
+[Authorize(Roles = Domain.Consts.Roles.Admin)]
 public class IndexModel : PageModel
 {
     private readonly IHavayarUserService _havayarUserService;

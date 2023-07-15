@@ -3,6 +3,7 @@
 #nullable disable
 
 using HavayarQuiz.Domain.Entities;
+using HavayarQuiz.Web.Helpers.Attributes;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -108,8 +109,9 @@ public class RegisterModel : PageModel
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Profile Picture")]
-
-        public byte[] ProfilePicture { get; set; }
+        [Required]
+        [ValidateImageFile(ErrorMessage = "Invalid file format. Only JPG, JPEG, PNG, and GIF files are allowed.")]
+        public IFormFile ProfilePicture { get; set; }
     }
 
     public async Task OnGetAsync(string returnUrl = null)
@@ -131,13 +133,11 @@ public class RegisterModel : PageModel
             user.FirstName = Input.FirstName;
             user.LastName = Input.LastName;
             user.BirthDate = Input.BirthDate;
-            if (Request.Form.Files.Count > 0)
-            {
-                var file = Request.Form.Files.FirstOrDefault();
-                using var dataStream = new MemoryStream();
-                await file.CopyToAsync(dataStream);
-                user.ProfilePicture = dataStream.ToArray();
-            }
+
+            var file = Request.Form.Files.FirstOrDefault();
+            using var dataStream = new MemoryStream();
+            await file.CopyToAsync(dataStream);
+            user.ProfilePicture = dataStream.ToArray();
 
             var result = await _userManager.CreateAsync(user, Input.Password);
 

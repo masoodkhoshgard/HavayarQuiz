@@ -1,17 +1,16 @@
 ﻿using HavayarQuiz.Application.HavayarUsers;
 using HavayarQuiz.Application.HavayarUsers.Dtos;
-using HavayarQuiz.Domain.Entities;
-using HavayarQuiz.Domain.Enums;
 using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HavayarQuiz.Web.Pages.HavayarUsers;
 
+[Authorize(Roles = Domain.Consts.Roles.Admin)]
 public class EditModel : PageModel
 {
     private readonly IHavayarUserService _havayarUserService;
-    private byte[]? pic { get; set; }
 
     public EditModel(IHavayarUserService havayarUserService)
     {
@@ -44,13 +43,8 @@ public class EditModel : PageModel
                 LastName = havayaruser.LastName,
                 BirthDate = havayaruser.BirthDate,
                 ProfilePicture = havayaruser.ProfilePicture,
-                Roles = havayaruser.Roles.Select(x => Enum.Parse<Roles>(x)).ToList()
+                Roles = havayaruser.Roles.Select(x => Enum.Parse<Domain.Enums.Roles>(x)).ToList()
             };
-
-            if (havayaruser.ProfilePicture is not null)
-            {
-                pic = havayaruser.ProfilePicture;
-            }
         }
 
         return Page();
@@ -85,8 +79,7 @@ public class EditModel : PageModel
                 var havayaruser = await _havayarUserService.GetHavayarUserAsync(Input.Id, CancellationToken.None);
                 Input.ProfilePicture = Input.ProfilePicture ?? havayaruser.ProfilePicture;
             }
-            //var havayaruser = await _havayarUserService.GetHavayarUserAsync(id ?? Guid.NewGuid(), CancellationToken.None);
-            //HavayarUser = new HavayarUserViewModel(havayaruser.Id, havayaruser.Email, havayaruser.Username, havayaruser.FirstName, havayaruser.LastName, havayaruser.BirthDate.ToString("d"), havayaruser.ProfilePicture, string.Join(", ", havayaruser.Roles));
+
             return Page();
         }
     }

@@ -28,24 +28,25 @@ public class CreateModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!ModelState.IsValid)
+        try
         {
-            return Page();
-        }
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-        if (Request.Form.Files.Count > 0)
-        {
             var file = Request.Form.Files.FirstOrDefault();
             using var dataStream = new MemoryStream();
             await file.CopyToAsync(dataStream);
-            Input.ProfilePicture = dataStream.ToArray();
+            var profilepicture = dataStream.ToArray();
+            var user = new HavayarUserCreateDto(Input.Email, Input.Username, Input.Password, Input.FirstName, Input.LastName, Input.BirthDate, profilepicture, Input.Roles);
+            var userId = await _havayarUserService.CreateHavayarUserAsync(user, CancellationToken.None);
+            return RedirectToPage("./Index");
         }
-
-        var user = new HavayarUserCreateDto(Input.Email, Input.Username, Input.Password, Input.FirstName, Input.LastName, Input.BirthDate, Input.ProfilePicture, Input.Roles);
-        var userId = await _havayarUserService.CreateHavayarUserAsync(user, CancellationToken.None);
-        //_context.HavayarUser.Add(HavayarUser);
-        //await _context.SaveChangesAsync();
-
-        return RedirectToPage("./Index");
+        catch (Exception ex)
+        {
+            ModelState.AddModelError(string.Empty, ex.Message);
+            return Page();
+        }
     }
 }

@@ -30,9 +30,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\..\src\HavayarQuiz.API\HavayarQuiz.API.csproj" />
+    <Folder Include="Endpoints\" />
   </ItemGroup>
 
 </Project>

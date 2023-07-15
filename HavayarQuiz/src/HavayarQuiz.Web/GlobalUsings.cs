@@ -1,2 +1,2 @@
-﻿global using HavayarQuiz.Application.WeatherForecasts;
-global using HavayarQuiz.Application.WeatherForecasts.Dtos;
+﻿global using HavayarQuiz.Application.HavayarUsers;
+global using HavayarQuiz.Application.HavayarUsers.Dtos;

@@ -1,6 +1,4 @@
-﻿using HavayarQuiz.Application.HavayarUsers.Dtos;
-
-namespace HavayarQuiz.Application.HavayarUsers;
+﻿namespace HavayarQuiz.Application.HavayarUsers;
 public interface IHavayarUserService
 {
     Task<string> CreateHavayarUserAsync(HavayarUserCreateDto model, CancellationToken cancellation);

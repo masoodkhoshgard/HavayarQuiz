@@ -1,10 +1,11 @@
 ﻿using HavayarQuiz.Domain.Enums;
+using HavayarQuiz.Web.Helpers.Attributes;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 
 namespace HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
 
-public class HavayarUserUpdateViewModel 
+public class HavayarUserUpdateViewModel
 {
 
     [Required]
@@ -32,7 +33,11 @@ public class HavayarUserUpdateViewModel
     [DataType(DataType.Date)]
     public DateTime BirthDate { get; set; }
 
-    [Display(Name = "Profile Picture")] public byte[]? ProfilePicture { get; set; }
+    [Display(Name = "Profile Picture")]
+    //[Required]
+    [ValidateImageFile(ErrorMessage = "Invalid file format. Only JPG, JPEG, PNG, and GIF files are allowed.")]
+    //[ModelBinder(BinderType = typeof(ByteArrayToFormFileModelBinder))]
+    public byte[]? ProfilePicture { get; set; }
 
     [Required]
     [Display(Name = "User Role")]

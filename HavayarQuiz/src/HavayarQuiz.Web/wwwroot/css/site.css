@@ -1,22 +1,55 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+
+.profile-picture {
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position: relative;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+    .profile-picture > label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 45px;
+        padding: 1rem 0.75rem;
+        pointer-events: none;
+        border: 1px solid transparent;
+        transform-origin: 0 0;
+        transition: opacity .1s ease-in-out,transform .1s ease-in-out;
+        transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+        opacity: .65;
+    }
+
+    .profile-picture > img {
+        background-position: center;
+        background-size: 400px 400px;
+        height: 400px;
+        width: 50% !important;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        padding: 45px 0 5px 0;
+    }
