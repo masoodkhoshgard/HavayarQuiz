@@ -2,7 +2,7 @@
 
 namespace HavayarQuiz.Persistence.MsSql.Repositories;
 
-internal abstract class Repository<T, TId> : IRepository<T, TId> 
+internal abstract class Repository<T, TId> : IRepository<T, TId>
     where T : class, IEntity<TId>
     where TId : struct, IEquatable<TId>, IComparable<TId>
 {

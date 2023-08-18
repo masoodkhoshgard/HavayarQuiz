@@ -9,8 +9,5 @@ internal class UnitOfWork : IUnitOfWork
         _dbContext = dbContext;
     }
 
-    public async Task CompleteAsync(CancellationToken cancellation)
-    {
-        await _dbContext.SaveChangesAsync(cancellation);
-    }
+    public async Task CompleteAsync(CancellationToken cancellation) => await _dbContext.SaveChangesAsync(cancellation);
 }

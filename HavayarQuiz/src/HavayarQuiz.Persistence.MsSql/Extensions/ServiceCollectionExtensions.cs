@@ -164,10 +164,7 @@ public static class ServiceCollectionExtensions
 
         #region snippet_route
 
-        services.AddRazorPages(options =>
-        {
-            options.Conventions.Add(new HavayarPageRouteModelConvention());
-        });
+        services.AddRazorPages(options => options.Conventions.Add(new HavayarPageRouteModelConvention()));
 
         #endregion
 

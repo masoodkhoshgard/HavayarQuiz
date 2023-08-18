@@ -1,6 +1,5 @@
 ﻿using HavayarQuiz.Domain.Enums;
 using HavayarQuiz.Web.Helpers.Attributes;
-using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace HavayarQuiz.Web.Pages.HavayarUsers.Contracts;

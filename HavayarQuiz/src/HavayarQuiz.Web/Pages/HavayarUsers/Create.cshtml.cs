@@ -1,6 +1,4 @@
-﻿using HavayarQuiz.Application.HavayarUsers;
-using HavayarQuiz.Application.HavayarUsers.Dtos;
-using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
+﻿using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,10 +19,7 @@ public class CreateModel : PageModel
     [BindProperty]
     public HavayarUserCreateViewModel Input { get; set; } = default!;
 
-    public IActionResult OnGet()
-    {
-        return Page();
-    }
+    public IActionResult OnGet() => Page();
 
     public async Task<IActionResult> OnPostAsync()
     {

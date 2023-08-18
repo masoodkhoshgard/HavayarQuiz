@@ -5,8 +5,5 @@ namespace HavayarQuiz.Application.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static void RegisterApplicationServices(
-        this IServiceCollection services)
-    {
-        services.AddScoped<IHavayarUserService, HavayarUserService>();
-    }
+        this IServiceCollection services) => services.AddScoped<IHavayarUserService, HavayarUserService>();
 }

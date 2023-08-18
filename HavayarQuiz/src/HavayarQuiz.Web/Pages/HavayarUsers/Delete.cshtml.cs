@@ -1,5 +1,4 @@
-﻿using HavayarQuiz.Application.HavayarUsers;
-using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
+﻿using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

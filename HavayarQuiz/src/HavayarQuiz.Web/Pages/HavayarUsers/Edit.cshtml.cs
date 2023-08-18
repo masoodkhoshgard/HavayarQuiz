@@ -1,6 +1,4 @@
-﻿using HavayarQuiz.Application.HavayarUsers;
-using HavayarQuiz.Application.HavayarUsers.Dtos;
-using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
+﻿using HavayarQuiz.Web.Pages.HavayarUsers.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -43,7 +41,7 @@ public class EditModel : PageModel
                 LastName = havayaruser.LastName,
                 BirthDate = havayaruser.BirthDate,
                 ProfilePicture = havayaruser.ProfilePicture,
-                Roles = havayaruser.Roles.Select(x => Enum.Parse<Domain.Enums.Roles>(x)).ToList()
+                Roles = havayaruser.Roles.Select(Enum.Parse<Domain.Enums.Roles>).ToList()
             };
         }
 

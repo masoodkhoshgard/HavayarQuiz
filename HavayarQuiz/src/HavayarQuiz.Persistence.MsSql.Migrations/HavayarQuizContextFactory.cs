@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HavayarQuiz.Persistence.MsSql.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using HavayarQuiz.Persistence.MsSql.Context;
 using System.Reflection;
 
 namespace HavayarQuiz.Persistence.MsSql.Migrations;

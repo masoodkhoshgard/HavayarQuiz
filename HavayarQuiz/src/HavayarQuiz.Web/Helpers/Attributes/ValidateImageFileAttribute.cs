@@ -15,16 +15,10 @@ public class ValidateImageFileAttribute : ValidationAttribute
 
         var extension = Path.GetExtension(file.FileName);
 
-        if (string.IsNullOrEmpty(extension) || !_allowedExtensions.Contains(extension.ToLower()))
-        {
-            return new ValidationResult(GetErrorMessage());
-        }
-
-        return ValidationResult.Success;
+        return string.IsNullOrEmpty(extension) || !_allowedExtensions.Contains(extension.ToLower())
+            ? new ValidationResult(GetErrorMessage())
+            : ValidationResult.Success;
     }
 
-    private string GetErrorMessage()
-    {
-        return $"Only the following file extensions are allowed: {string.Join(", ", _allowedExtensions)}";
-    }
+    private string GetErrorMessage() => $"Only the following file extensions are allowed: {string.Join(", ", _allowedExtensions)}";
 }

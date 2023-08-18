@@ -16,38 +16,18 @@ public class HavayarQuizContext : IdentityDbContext<HavayarUser, IdentityRole<Gu
 
         modelBuilder.HasDefaultSchema(DEFAULT_SCHEMA);
 
-        modelBuilder.Entity<IdentityRole<Guid>>(entity =>
-        {
-            entity.ToTable(name: "Role");
-        });
-        modelBuilder.Entity<IdentityUserRole<Guid>>(entity =>
-        {
-            entity.ToTable("UserRoles");
-        });
+        modelBuilder.Entity<IdentityRole<Guid>>(entity => entity.ToTable(name: "Role"));
+        modelBuilder.Entity<IdentityUserRole<Guid>>(entity => entity.ToTable("UserRoles"));
 
-        modelBuilder.Entity<IdentityUserClaim<Guid>>(entity =>
-        {
-            entity.ToTable("UserClaims");
-        });
+        modelBuilder.Entity<IdentityUserClaim<Guid>>(entity => entity.ToTable("UserClaims"));
 
-        modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
-        {
-            entity.ToTable("UserLogins");
-        });
+        modelBuilder.Entity<IdentityUserLogin<Guid>>(entity => entity.ToTable("UserLogins"));
 
-        modelBuilder.Entity<IdentityRoleClaim<Guid>>(entity =>
-        {
-            entity.ToTable("RoleClaims");
+        modelBuilder.Entity<IdentityRoleClaim<Guid>>(entity => entity.ToTable("RoleClaims"));
 
-        });
-
-        modelBuilder.Entity<IdentityUserToken<Guid>>(entity =>
-        {
-            entity.ToTable("UserTokens");
-        });
+        modelBuilder.Entity<IdentityUserToken<Guid>>(entity => entity.ToTable("UserTokens"));
 
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        
     }
 }
